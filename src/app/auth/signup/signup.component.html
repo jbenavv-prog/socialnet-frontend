@@ -1,1 +1,28 @@
-<p>signup works!</p>
+<h5>Registrarse</h5>
+<div class="row">
+  <form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput placeholder="" value="" formControlName="fullName">
+        <!-- <mat-error>
+          El nombre completo es <strong>requerido!</strong>
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="" value="" formControlName="email">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="" value="" formControlName="password">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary">Primary</button>
+  </form>
+</div>
