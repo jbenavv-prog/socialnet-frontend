@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  signup() {
-    console.log('Auth Service works!')
+  signup(account: any) {
+    console.log('Auth Service works!');
     console.log(environment.apiUrl);
+    return this.http.post(`${environment.apiUrl}/api/accounts/newAccount`, account);
   }
 }

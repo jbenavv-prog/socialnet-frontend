@@ -22,7 +22,14 @@ export class SignupComponent implements OnInit {
     if (this.form.valid) {
       console.log('Formulario Valido');
       console.log(this.form.value);
-      this.authService.signup();
+      this.authService.signup(this.form.value).subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
     } else {
       console.log('Formulario Inválido');
     }
