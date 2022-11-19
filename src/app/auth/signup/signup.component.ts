@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   form = this.fb.group({
     fullName: ['', Validators.required],
@@ -17,14 +18,13 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
- if (this.form.valid) {
-  console.log('Formulario Valido');
-  console.log(this.form.value);
- }
- else {
-  console.log('Formulario Inválido');
-
- }
+  onSubmit(): void {
+    if (this.form.valid) {
+      console.log('Formulario Valido');
+      console.log(this.form.value);
+      this.authService.signup();
+    } else {
+      console.log('Formulario Inválido');
+    }
   }
 }
