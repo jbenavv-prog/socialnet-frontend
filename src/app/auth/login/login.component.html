@@ -1,9 +1,20 @@
 <h5>Login</h5>
 <div class="row">
   <div class="col">
-    <mat-form-field class="example-full-width">
-      <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Sushi">
-    </mat-form-field>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="" value="" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput placeholder="" value="" formControlName="password">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">Iniciar Sesión</button>
+    </form>
   </div>
 </div>

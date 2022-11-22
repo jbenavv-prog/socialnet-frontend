@@ -13,4 +13,8 @@ export class AuthService {
     console.log(environment.apiUrl);
     return this.http.post(`${environment.apiUrl}/api/accounts/newAccount`, account);
   }
+
+  login(account: any){
+    return this.http.post(`${environment.apiUrl}/api/auth/login`, account);
+  }
 }
