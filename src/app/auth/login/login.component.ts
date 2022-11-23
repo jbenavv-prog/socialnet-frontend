@@ -25,13 +25,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log('on Submit works!');
-    console.log(this.form.value);
-
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe({
         next: (data: any) => {
-          console.log(data.token);
           this.tokenService.saveToken(data.token);
           this.router.navigate(['/']);
         },

@@ -25,11 +25,8 @@ export class SignupComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      console.log('Formulario Valido');
-      console.log(this.form.value);
       this.authService.signup(this.form.value).subscribe({
         next: (data) => {
-          console.log(data);
           this.router.navigate(['../login'])
         },
         error: (err) => {

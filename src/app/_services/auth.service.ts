@@ -9,8 +9,6 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signup(account: any) {
-    console.log('Auth Service works!');
-    console.log(environment.apiUrl);
     return this.http.post(`${environment.apiUrl}/api/accounts/newAccount`, account);
   }
 
