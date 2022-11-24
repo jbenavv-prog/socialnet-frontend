@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { SocialLayoutComponent } from './layouts/social-layout/social-layout.component';
+import { AuthGuard } from './_helpers/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: SocialLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

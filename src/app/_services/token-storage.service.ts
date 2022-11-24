@@ -19,4 +19,8 @@ export class TokenStorageService {
     const user = jwt_decode(token!);
     return user;
   }
+
+  logout() {
+    window.sessionStorage.clear();
+  }
 }
