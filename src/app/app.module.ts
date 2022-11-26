@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
     SocialLayoutComponent,
     NavbarComponent,
     FooterComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
