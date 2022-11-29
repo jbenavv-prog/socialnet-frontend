@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+  googleBtnText = 'signup_with';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -27,7 +28,7 @@ export class SignupComponent implements OnInit {
     if (this.form.valid) {
       this.authService.signup(this.form.value).subscribe({
         next: (data) => {
-          this.router.navigate(['../login'])
+          this.router.navigate(['../login']);
         },
         error: (err) => {
           console.log(err);
