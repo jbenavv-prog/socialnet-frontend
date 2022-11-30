@@ -9,7 +9,8 @@ export class ProfileService {
   constructor(private http: HttpClient) {}
 
   uploadPhotoProfile(photoProfile: any) {
-    return this.http.put(
+    console.log(photoProfile);
+    return this.http.post(
       `${environment.apiUrl}/api/profile/updatePhotoProfile`,
       photoProfile
     );
