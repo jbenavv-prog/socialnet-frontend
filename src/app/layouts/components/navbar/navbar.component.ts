@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from 'src/app/_services/profile.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private tokenService: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +25,21 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.tokenService.logout();
     this.router.navigate(['/login']);
+  }
+
+  changePhoto(e: any) {
+    console.log('change photo called');
+    const file = e.target.files[0];
+    console.log(file);
+    const formData = new FormData();
+    const photoProfile = formData.append('photo', file);
+    this.profileService.uploadPhotoProfile(photoProfile).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }

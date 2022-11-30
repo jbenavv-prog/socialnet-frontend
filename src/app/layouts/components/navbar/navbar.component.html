@@ -11,5 +11,17 @@
     <mat-icon>share</mat-icon>
   </button>
   {{user.fullName}}
-  <button mat-raised-button class="ms-2" (click)="logout()">Cerrar Sesíón</button>
+  <div class="avatar rounded-circle mx-2" [matMenuTriggerFor]="menu"></div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="fileInput.click()">
+      <mat-icon>image</mat-icon>
+      <span>Change Photo</span>
+    </button>
+    <input hidden #fileInput type="file" id="myFile" name="filename" (change)="changePhoto($event)" accept="image/*">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+  <!-- <button mat-raised-button class="ms-2" (click)="logout()">Cerrar Sesíón</button> -->
 </mat-toolbar>
