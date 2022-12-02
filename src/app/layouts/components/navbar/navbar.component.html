@@ -11,7 +11,9 @@
     <mat-icon>share</mat-icon>
   </button>
   {{user.fullName}}
-  <div class="avatar rounded-circle mx-2" [matMenuTriggerFor]="menu"></div>
+  <div class="avatar rounded-circle mx-2" [matMenuTriggerFor]="menu">
+    <img [src]="profile?.photoProfile" alt="" width="100%" height="100%">
+  </div>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="fileInput.click()">
       <mat-icon>image</mat-icon>

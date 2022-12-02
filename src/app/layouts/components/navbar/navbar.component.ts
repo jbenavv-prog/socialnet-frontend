@@ -10,6 +10,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class NavbarComponent implements OnInit {
   user: any;
+  profile: any;
 
   constructor(
     private tokenService: TokenStorageService,
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.tokenService.getUser();
-    console.log(this.user);
+    this.getProfile();
   }
 
   logout(): void {
@@ -30,12 +31,29 @@ export class NavbarComponent implements OnInit {
   changePhoto(e: any) {
     console.log('change photo called');
     const file = e.target.files[0];
+
+    if (!file) {
+      return;
+    }
+
     console.log(file);
     const formData = new FormData();
     formData.append('photo', file);
     this.profileService.uploadPhotoProfile(formData).subscribe({
       next: (data) => {
         console.log(data);
+        this.ngOnInit();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  getProfile() {
+    this.profileService.getProfile().subscribe({
+      next: (response: any) => {
+        this.profile = response.data;
       },
       error: (error) => {
         console.log(error);
