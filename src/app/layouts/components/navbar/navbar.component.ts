@@ -11,6 +11,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export class NavbarComponent implements OnInit {
   user: any;
   profile: any;
+  defaultAvatar: string = '/assets/img/default-avatar.png';
 
   constructor(
     private tokenService: TokenStorageService,
